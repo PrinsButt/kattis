@@ -5,11 +5,11 @@ import java.util.Scanner;
 class Main {
   public static void main(String[] args) {
     Scanner reader = new Scanner(System.in);
-    int quality_periods = Integer.parseInt(reader.nextLine());
+    int qualityPeriods = Integer.parseInt(reader.nextLine());
 
     float qaly = 0;
 
-    for (int period=0; period < quality_periods; period++) {
+    for (int period=0; period < qualityPeriods; period++) {
       float quality = reader.nextFloat();
       float years = reader.nextFloat();
       qaly += (quality * years);
