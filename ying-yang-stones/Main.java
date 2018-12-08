@@ -9,29 +9,33 @@ class Main {
     String testCase = reader.nextLine();
     reader.close();
 
-    char[] stones = testCase.toCharArray();
     int blackStones = 0;
     int whiteStones = 0;
     String pattern = "";
+    boolean changed = true;
 
-    for (int index=0; index < stones.length; index++) {
-      if (stones[index] == 'W') whiteStones++;
-      if (stones[index] == 'B') blackStones++;
-      pattern += stones[index];
+    while (changed) {
+      changed = false;
 
-      if (blackStones > 0 && whiteStones > 0 && Math.abs(blackStones - whiteStones) == 1) {
-        if (blackStones > whiteStones) {
-          testCase = testCase.replaceFirst(pattern, "B");
+      for (char stone : testCase.toCharArray()) {
+        pattern += stone;
+
+        if (stone == 'W') whiteStones++;
+        if (stone == 'B') blackStones++;
+
+        if (blackStones > 0 && whiteStones > 0 && Math.abs(blackStones - whiteStones) == 1) {
+          if (blackStones > whiteStones) {
+            testCase = testCase.replaceFirst(pattern, "B");
+          }
+          else {
+            testCase = testCase.replaceFirst(pattern, "W");
+          }
+
+          changed = true;
+          pattern = "";
+          blackStones = 0;
+          whiteStones = 0;
         }
-        else {
-          testCase = testCase.replaceFirst(pattern, "W");
-        }
-
-        stones = testCase.toCharArray();
-        pattern = "";
-        blackStones = 0;
-        whiteStones = 0;
-        index = -1;
       }
     }
 
