@@ -9,36 +9,22 @@ class Main {
     String testCase = reader.nextLine();
     reader.close();
 
-    int blackStones = 0;
-    int whiteStones = 0;
-    String pattern = "";
-    boolean changed = true;
+    boolean hasChanged = true;
 
-    while (changed) {
-      changed = false;
+    while (hasChanged) {
+      hasChanged = false;
 
-      for (char stone : testCase.toCharArray()) {
-        pattern += stone;
+      String pattern = "BWW|WBW|WWB";
+      String updated = testCase.replaceAll(pattern, "W");
 
-        if (stone == 'W') whiteStones++;
-        if (stone == 'B') blackStones++;
-
-        if (blackStones > 0 && whiteStones > 0 && Math.abs(blackStones - whiteStones) == 1) {
-          if (blackStones > whiteStones) {
-            testCase = testCase.replaceFirst(pattern, "B");
-          }
-          else {
-            testCase = testCase.replaceFirst(pattern, "W");
-          }
-
-          changed = true;
-          pattern = "";
-          blackStones = 0;
-          whiteStones = 0;
-        }
-      }
+      pattern = "WBB|BWB|BBW";
+      updated = updated.replaceAll(pattern, "B");
+      
+      if (updated.length() != testCase.length()) hasChanged = true;
+      
+      testCase = updated;
     }
-
+    
     if (testCase.equals("WB") || testCase.equals("BW")) System.out.println(1);
     else System.out.println(0);
   }
