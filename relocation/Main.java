@@ -24,17 +24,17 @@ class Main {
     StringBuilder output = new StringBuilder();
 
     for (int request=1; request <= requests; request++) {
-      String parts[] = reader.nextLine().split(" ");
-
-      if (parts[0].equals("1")) {
-        locationsMap.replace(Integer.parseInt(parts[1]), Integer.parseInt(parts[2]));
+      if (reader.nextInt() == 1) {
+        locationsMap.replace(reader.nextInt(), reader.nextInt());
       }
       else {
-        int firstCompany = locationsMap.get(Integer.parseInt(parts[1]));
-        int secondCompany = locationsMap.get(Integer.parseInt(parts[2]));
+        int firstCompany = locationsMap.get(reader.nextInt());
+        int secondCompany = locationsMap.get(reader.nextInt());
 
         output.append(Math.abs(firstCompany - secondCompany)).append("\n");
       }
+
+      reader.nextLine();
     }
 
     reader.close();
