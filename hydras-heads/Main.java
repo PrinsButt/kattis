@@ -16,46 +16,32 @@ class Main {
       int tails = Integer.parseInt(parts[1]);
       int moves = 0;
 
-      boolean isRunning = true;
-      boolean hasChanged = false;
+      boolean hasChanged = true;
 
-      while (isRunning) {
-        if (heads == 0 && tails == 0) {
-          isRunning = false;
-        }
+      while (true) {
+        if (heads == 0 && tails == 0) break; 
         else {
-          hasChanged = false;
-
           if (heads > 0 && heads % 2 == 0) {
             heads -= 2;
-            hasChanged = true;
           }
-          else if (heads > 0 && tails >= 2) {
+          else if ((heads > 0 && tails >= 2) || tails >= 4) {
             tails -= 2;
             heads++;
-            hasChanged = true;
-          }
-          else if (tails >= 4) {
-            tails -= 2;
-            heads++;
-            hasChanged = true;
           }
           else if (tails > 0) {
             tails++;
-            hasChanged = true;
+          }
+          else {
+            hasChanged = false;
+            break;
           }
 
-          if (hasChanged == true) moves++;
-          else break;
+          moves++;
         }
       }
 
-      if (hasChanged) {
-        output.append(moves).append("\n");
-      } else {
-        output.append("-1\n");
-      }
-
+      if (hasChanged) output.append(moves).append("\n");
+      else output.append("-1\n");
     }
     
     reader.close();
