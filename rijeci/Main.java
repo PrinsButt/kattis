@@ -5,8 +5,10 @@ import java.util.Scanner;
 class Main {
 
   public static int fibonacii(int n) {
-    if (n <= 1) return n;
-    else return fibonacii(n - 1) + fibonacii(n - 2);
+    double partA = Math.pow( (1 + Math.sqrt(5)) / 2, n);
+    double partB = Math.pow( (1 - Math.sqrt(5)) / 2, n);
+    double nth = (1 / Math.sqrt(5)) * (partA - partB);
+    return (int) nth;
   }
 
   public static void main(String[] args) {
