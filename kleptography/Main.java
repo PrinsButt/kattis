@@ -4,43 +4,28 @@ import java.util.Scanner;
 
 class Main {
 
-  public static String process(String plaintext, String ciphertext) {
-    StringBuffer processed = new StringBuffer();
-    for (int index=0; index < plaintext.length(); index++) {
-      int p = plaintext.charAt(index);
-      int c = ciphertext.charAt(index);
-      if (c - p < 0) {
-        processed.append((char) ((c - p) + 97 + 26));
-      } else {
-        processed.append((char) ((c - p) + 97));
-      }
-    }
-    return processed.toString();
-  }
-
   public static void main(String[] args) {
     Scanner reader = new Scanner(System.in);
-    String data[] = reader.nextLine().split(" ");
-    String endWord = reader.nextLine();
+    reader.nextLine();
+    StringBuffer word = new StringBuffer(reader.nextLine());
     String ciphertext = reader.nextLine();
     reader.close();
 
-    StringBuffer plaintext = new StringBuffer(endWord);
+    StringBuffer plaintext = new StringBuffer(word);
 
-    while(ciphertext.length() > 0) {
-      int start = ciphertext.length() - endWord.length();
-      if (start < 0) {
-        start = 0;
-        int endWordStart = endWord.length() - ciphertext.length();
-        endWord = endWord.substring(endWordStart, endWord.length());
-      }
+    int end = word.length();
 
-      String partial = ciphertext.substring(start, ciphertext.length());
-      ciphertext = ciphertext.substring(0, start);
-      endWord = process(endWord, partial);
-      plaintext.insert(0, endWord);
+    for (int index = ciphertext.length() - 1; index >= end; index--) {
+      int c = ciphertext.charAt(index);
+      int p = word.charAt(word.length() - (ciphertext.length() - index));
+      int processed = (c - p) + 97;
+
+      if ((c - p) < 0) processed += 26;
+      
+      plaintext.insert(0, (char) processed);
+      word.insert(0, (char) processed);
     }
 
-    System.out.println(plaintext.toString().substring(Integer.parseInt(data[0]), plaintext.length()));
+    System.out.println(plaintext);
   }
 }
