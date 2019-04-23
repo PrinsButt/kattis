@@ -6,10 +6,14 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int numArticles = reader.nextInt();
-        int impactFactor = reader.nextInt();
-        reader.close();
+        int numArticles;
+        int impactFactor;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            numArticles = reader.nextInt();
+            impactFactor = reader.nextInt();
+        }
+        
         int minScientists = (numArticles * (impactFactor - 1)) + 1;
         System.out.println(minScientists);
     }

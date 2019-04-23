@@ -9,13 +9,13 @@ class Main {
         int rotationValue = 0;
 
         for (char letter : text.toCharArray()) {
-            rotationValue += (int) letter;
+            rotationValue += letter;
         }
 
         String rotated = "";
 
         for (char letter : text.toCharArray()) {
-            int ascii = ((int) letter) + rotationValue;
+            int ascii = (letter + rotationValue);
             ascii = ((ascii - 65) % 26) + 65;
             rotated += (char) ascii;
         }
@@ -27,7 +27,8 @@ class Main {
         String rotated = "";
 
         for (int index = 0; index < firstText.length(); index++) {
-            int ascii = ((int) firstText.charAt(index)) + ((int) secondText.charAt(index) - 65);
+            int ascii = (firstText.charAt(index) 
+                    + (secondText.charAt(index) - 65));
             ascii = ((ascii - 65) % 26) + 65;
             rotated += (char) ascii;
         }
@@ -36,9 +37,11 @@ class Main {
     }
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        String encrypted = reader.nextLine();
-        reader.close();
+        String encrypted;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            encrypted = reader.nextLine();
+        }
 
         // divide
         String firstHalf = encrypted.substring(0, encrypted.length() / 2);

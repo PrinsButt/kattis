@@ -9,9 +9,11 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        double englishPaces = reader.nextDouble();
-        reader.close();
+        double englishPaces;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            englishPaces = reader.nextDouble();
+        }
 
         double romanPaces = englishPaces * (1000.0 * (5280.0 / 4854.0));
 

@@ -6,15 +6,19 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int bites = Integer.parseInt(reader.nextLine());
-        String words[] = reader.nextLine().split(" ");
-        reader.close();
+        int bites;
+        String[] words;
+
+        try (Scanner reader = new Scanner(System.in)) {
+            bites = Integer.parseInt(reader.nextLine());
+            words = reader.nextLine().split(" ");
+        }
 
         boolean isFishy = false;
 
         for (int bite = 1; bite <= bites; bite++) {
-            if (!words[bite - 1].equals("" + bite) && !words[bite - 1].equals("mumble")) {
+            if (!words[bite - 1].equals("" + bite)
+                    && !words[bite - 1].equals("mumble")) {
                 isFishy = true;
                 break;
             }

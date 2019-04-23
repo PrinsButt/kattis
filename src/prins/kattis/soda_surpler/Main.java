@@ -6,11 +6,15 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int initialBottles = reader.nextInt();
-        int foundBottles = reader.nextInt();
-        int requiredBottles = reader.nextInt();
-        reader.close();
+        int initialBottles;
+        int foundBottles;
+        int requiredBottles;
+
+        try (Scanner reader = new Scanner(System.in)) {
+            initialBottles = reader.nextInt();
+            foundBottles = reader.nextInt();
+            requiredBottles = reader.nextInt();
+        }
 
         int emptyBottles = initialBottles + foundBottles;
 

@@ -6,11 +6,15 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int numCorrect = Integer.parseInt(reader.nextLine());
-        String answersA = reader.nextLine();
-        String answersB = reader.nextLine();
-        reader.close();
+        int numCorrect;
+        String answersA;
+        String answersB;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            numCorrect = Integer.parseInt(reader.nextLine());
+            answersA = reader.nextLine();
+            answersB = reader.nextLine();
+        }
 
         int total = answersA.length();
         int numDifferent = 0;

@@ -6,10 +6,12 @@ import java.util.Scanner;
 class Main {
 
     public static int find(int value, int target, boolean isMin) {
+        int result = value;
+
         while (true) {
             int sum = 0;
 
-            for (char digit : ("" + value).toCharArray()) {
+            for (char digit : ("" + result).toCharArray()) {
                 sum += Integer.parseInt("" + digit);
             }
 
@@ -18,21 +20,25 @@ class Main {
             }
 
             if (isMin) {
-                value++;
+                result++;
             } else {
-                value--;
+                result--;
             }
         }
 
-        return value;
+        return result;
     }
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int numL = Integer.parseInt(reader.nextLine());
-        int numD = Integer.parseInt(reader.nextLine());
-        int numX = Integer.parseInt(reader.nextLine());
-        reader.close();
+        int numL;
+        int numD;
+        int numX;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            numL = Integer.parseInt(reader.nextLine());
+            numD = Integer.parseInt(reader.nextLine());
+            numX = Integer.parseInt(reader.nextLine());
+        }
 
         System.out.println(Main.find(numL, numX, true));
         System.out.println(Main.find(numD, numX, false));

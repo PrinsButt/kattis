@@ -9,11 +9,13 @@ class Main {
 
     public static void main(String[] args) {
         ArrayList<Integer> sides = new ArrayList<>();
-        Scanner reader = new Scanner(System.in);
-        for (int side = 0; side < 4; side++) {
-            sides.add(reader.nextInt());
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            for (int side = 0; side < 4; side++) {
+                sides.add(reader.nextInt());
+            }
         }
-        reader.close();
+        
         Collections.sort(sides);
         System.out.println(sides.get(0) * sides.get(2));
     }

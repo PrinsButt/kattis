@@ -6,10 +6,12 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int numTemps = Integer.parseInt(reader.nextLine());
-        String data = reader.nextLine();
-        reader.close();
+        String data;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            reader.nextLine();
+            data = reader.nextLine();
+        }
 
         String temps[] = data.split(" ");
 

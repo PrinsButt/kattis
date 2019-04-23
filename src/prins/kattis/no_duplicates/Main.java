@@ -26,9 +26,11 @@ class Main {
     }
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        String line = reader.nextLine().toUpperCase();
-        reader.close();
+        String line;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            line = reader.nextLine().toUpperCase();
+        }
 
         List<String> haystack = new ArrayList<>(Arrays.asList(line.split(" ")));
 

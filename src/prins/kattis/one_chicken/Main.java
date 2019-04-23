@@ -6,10 +6,13 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int numPeople = reader.nextInt();
-        int numPieces = reader.nextInt();
-        reader.close();
+        int numPeople;
+        int numPieces;
+
+        try (Scanner reader = new Scanner(System.in)) {
+            numPeople = reader.nextInt();
+            numPieces = reader.nextInt();
+        }
 
         int difference = numPieces - numPeople;
 

@@ -10,8 +10,8 @@ class Main {
         String secondUpdated = "";
 
         for (int index = 0; index < first.length(); index++) {
-            int firstNum = (int) first.charAt(index);
-            int secondNum = (int) second.charAt(index);
+            int firstNum = first.charAt(index);
+            int secondNum = second.charAt(index);
 
             if (firstNum > secondNum) {
                 firstUpdated += first.charAt(index);
@@ -50,10 +50,13 @@ class Main {
     }
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        String numN = reader.nextLine();
-        String numM = reader.nextLine();
-        reader.close();
+        String numN;
+        String numM;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            numN = reader.nextLine();
+            numM = reader.nextLine();
+        }
 
         int difference = Math.abs(numN.length() - numM.length());
 

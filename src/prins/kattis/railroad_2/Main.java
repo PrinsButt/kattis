@@ -8,6 +8,7 @@ class Main {
     public static void main(String[] args) {
         try (Scanner reader = new Scanner(System.in)) {
             reader.nextInt();
+            
             if (reader.nextInt() % 2 == 0) {
                 System.out.println("possible");
             } else {

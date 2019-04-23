@@ -6,12 +6,15 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int hours = reader.nextInt();
-        int mins = reader.nextInt();
-        reader.close();
+        int hours;
+        int mins;
 
-        int totalMinutes = 0;
+        try (Scanner reader = new Scanner(System.in)) {
+            hours = reader.nextInt();
+            mins = reader.nextInt();
+        }
+
+        int totalMinutes;
 
         if (hours == 0) {
             totalMinutes = ((24 * 60) + mins) - 45;

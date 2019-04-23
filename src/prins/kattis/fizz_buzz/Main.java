@@ -6,11 +6,15 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int numX = reader.nextInt();
-        int numY = reader.nextInt();
-        int numN = reader.nextInt();
-        reader.close();
+        int numX;
+        int numY;
+        int numN;
+
+        try (Scanner reader = new Scanner(System.in)) {
+            numX = reader.nextInt();
+            numY = reader.nextInt();
+            numN = reader.nextInt();
+        }
 
         for (int index = 1; index <= numN; index++) {
             if (index % numX == 0 && index % numY == 0) {

@@ -6,9 +6,11 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int iterations = Integer.parseInt(reader.nextLine());
-        reader.close();
+        int iterations;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            iterations = Integer.parseInt(reader.nextLine());
+        }
 
         int numSquares = (int) Math.pow(4, iterations);
         int pointsPerOuterSide = 1 + (int) Math.sqrt(numSquares);

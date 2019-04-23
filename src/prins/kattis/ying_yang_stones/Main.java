@@ -6,9 +6,11 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        String testCase = reader.nextLine();
-        reader.close();
+        String testCase;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            testCase = reader.nextLine();
+        }
 
         boolean hasChanged = true;
 

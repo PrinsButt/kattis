@@ -8,28 +8,28 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int numTestCases = Integer.parseInt(reader.nextLine());
-
         List<String> results = new ArrayList<>();
 
-        for (int testCase = 0; testCase < numTestCases; testCase++) {
-            int beats = reader.nextInt();
-            float seconds = reader.nextFloat();
+        try (Scanner reader = new Scanner(System.in)) {
+            int numTestCases = Integer.parseInt(reader.nextLine());
 
-            float bpm = (beats / seconds) * 60;
-            float minABPM = bpm - (60 / seconds);
-            float maxABPM = bpm + (60 / seconds);
+            for (int testCase = 0; testCase < numTestCases; testCase++) {
+                int beats = reader.nextInt();
+                float seconds = reader.nextFloat();
 
-            String formatted = String.format("%.4f %.4f %.4f", minABPM, bpm, maxABPM);
+                float bpm = (beats / seconds) * 60;
+                float minABPM = bpm - (60 / seconds);
+                float maxABPM = bpm + (60 / seconds);
 
-            results.add(formatted);
+                String formatted = String.format("%.4f %.4f %.4f",
+                        minABPM, bpm, maxABPM);
+
+                results.add(formatted);
+            }
         }
 
-        reader.close();
-
-        for (String result : results) {
+        results.forEach((result) -> {
             System.out.println(result);
-        }
+        });
     }
 }

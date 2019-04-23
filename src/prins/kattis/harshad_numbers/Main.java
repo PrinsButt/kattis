@@ -6,9 +6,11 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int number = Integer.parseInt(reader.nextLine());
-        reader.close();
+        int number;
+
+        try (Scanner reader = new Scanner(System.in)) {
+            number = Integer.parseInt(reader.nextLine());
+        }
 
         boolean foundHarshard = false;
 

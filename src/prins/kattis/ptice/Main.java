@@ -21,10 +21,12 @@ class Main {
     }
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int numQuestions = Integer.parseInt(reader.nextLine());
-        String answers = reader.nextLine().toUpperCase();
-        reader.close();
+        String answers;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            int numQuestions = Integer.parseInt(reader.nextLine());
+            answers = reader.nextLine().toUpperCase();
+        }
 
         int adrian = calculate(answers, "ABC");
         int bruno = calculate(answers, "BABC");

@@ -6,9 +6,11 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        String sentence = reader.nextLine();
-        reader.close();
+        String sentence;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            sentence = reader.nextLine();
+        }
 
         String affected = sentence.replaceAll("s{2,}", "");
 

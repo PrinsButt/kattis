@@ -8,21 +8,22 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        String line = reader.nextLine();
-        reader.close();
-
         Map<Character, Integer> cardsMap = new HashMap<>();
         cardsMap.put('T', 0);
         cardsMap.put('C', 0);
         cardsMap.put('G', 0);
+        String line;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            line = reader.nextLine();
+        }
 
         for (char digit : line.toCharArray()) {
             cardsMap.replace(digit, cardsMap.get(digit) + 1);
         }
 
         int points = 0;
-
+        
         for (Map.Entry<Character, Integer> entry : cardsMap.entrySet()) {
             points += Math.pow(entry.getValue(), 2);
         }

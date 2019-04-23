@@ -31,10 +31,13 @@ class Main {
     }
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int min = reader.nextInt();
-        int max = reader.nextInt();
-        reader.close();
+        int min;
+        int max;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            min = reader.nextInt();
+            max = reader.nextInt();
+        }
 
         int combinations = 0;
 

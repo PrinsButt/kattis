@@ -46,9 +46,11 @@ class Main {
     }
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        String data = reader.nextLine();
-        reader.close();
+        String data;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            data = reader.nextLine();
+        }
 
         char initial = data.charAt(0);
         char[] prefs = data.substring(1).toCharArray();

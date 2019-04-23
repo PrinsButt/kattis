@@ -19,11 +19,15 @@ class Main {
     }
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int first = reader.nextInt();
-        int second = reader.nextInt();
-        int third = reader.nextInt();
-        reader.close();
+        int first;
+        int second;
+        int third;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            first = reader.nextInt();
+            second = reader.nextInt();
+            third = reader.nextInt();
+        }
 
         String result = eval(first, second, third);
 

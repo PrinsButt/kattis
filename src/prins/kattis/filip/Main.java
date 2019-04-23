@@ -14,10 +14,13 @@ class Main {
     }
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int numA = reader.nextInt();
-        int numB = reader.nextInt();
-        reader.close();
+        int numA;
+        int numB;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            numA = reader.nextInt();
+            numB = reader.nextInt();
+        }
 
         int revA = Main.reverse(numA);
         int revB = Main.reverse(numB);

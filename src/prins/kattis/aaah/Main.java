@@ -1,16 +1,18 @@
 package prins.kattis.aaah;
 
 // Problem url: https://open.kattis.com/problems/aaah
-
 import java.util.Scanner;
 
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        String marius = reader.nextLine();
-        String doctor = reader.nextLine();
-        reader.close();
+        String marius;
+        String doctor;
+
+        try (Scanner reader = new Scanner(System.in)) {
+            marius = reader.nextLine();
+            doctor = reader.nextLine();
+        }
 
         if (marius.length() >= doctor.length()) {
             System.out.println("go");

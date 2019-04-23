@@ -13,7 +13,7 @@ class Main {
         int numDays = reader.nextInt();
         reader.nextLine();
 
-        Set<String> partSet = new HashSet<String>();
+        Set<String> partSet = new HashSet<>();
 
         int answer = 0;
 

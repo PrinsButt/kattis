@@ -6,12 +6,13 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
         double data[] = new double[6];
-        for (int index = 0; index < 6; index++) {
-            data[index] = reader.nextDouble();
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            for (int index = 0; index < 6; index++) {
+                data[index] = reader.nextDouble();
+            }
         }
-        reader.close();
 
         double squared = 0.0;
 

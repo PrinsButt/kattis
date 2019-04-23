@@ -6,10 +6,10 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
+        StringBuilder output = new StringBuilder();
+
         Scanner reader = new Scanner(System.in);
         int dataSets = Integer.parseInt(reader.nextLine());
-
-        StringBuilder output = new StringBuilder();
 
         for (int dataSet = 0; dataSet < dataSets; dataSet++) {
             int id = reader.nextInt();

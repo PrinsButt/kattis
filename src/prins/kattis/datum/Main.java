@@ -7,12 +7,22 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int day = reader.nextInt();
-        int month = reader.nextInt();
-        reader.close();
+        int day;
+        int month;
 
-        String[] days = new String[]{"", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+        try (Scanner reader = new Scanner(System.in)) {
+            day = reader.nextInt();
+            month = reader.nextInt();
+        }
+
+        String[] days = new String[]{"",
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"};
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(2009, month - 1, day);

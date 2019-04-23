@@ -6,10 +6,13 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int radius = reader.nextInt();
-        int crust = reader.nextInt();
-        reader.close();
+        int radius;
+        int crust;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            radius = reader.nextInt();
+            crust = reader.nextInt();
+        }
 
         double pizzaArea = Math.PI * Math.pow(radius, 2);
         double cheeseArea = Math.PI * Math.pow(radius - crust, 2);

@@ -6,9 +6,11 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        String longName = reader.nextLine();
-        reader.close();
+        String longName;
+
+        try (Scanner reader = new Scanner(System.in)) {
+            longName = reader.nextLine();
+        }
 
         String shortName = "";
 

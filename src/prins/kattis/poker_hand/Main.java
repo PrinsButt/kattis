@@ -8,14 +8,16 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        String[] cards = reader.nextLine().split(" ");
-        reader.close();
+        String[] cards;
+
+        try (Scanner reader = new Scanner(System.in)) {
+            cards = reader.nextLine().split(" ");
+        }
 
         Map<Character, Integer> countMap = new HashMap<>();
 
-        for (int index = 0; index < cards.length; index++) {
-            char rank = cards[index].charAt(0);
+        for (String card : cards) {
+            char rank = card.charAt(0);
 
             if (countMap.containsKey(rank)) {
                 countMap.put(rank, countMap.get(rank) + 1);

@@ -13,9 +13,11 @@ class Main {
     }
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int numPresses = Integer.parseInt(reader.nextLine());
-        reader.close();
+        int numPresses;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            numPresses = Integer.parseInt(reader.nextLine());
+        }
 
         System.out.print(fibonacii(numPresses - 1));
         System.out.print(" ");

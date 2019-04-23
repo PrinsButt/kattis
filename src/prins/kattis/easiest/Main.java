@@ -16,25 +16,27 @@ class Main {
     }
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int testCase = -1;
-
         StringBuilder output = new StringBuilder();
-
-        while ((testCase = Integer.parseInt(reader.nextLine())) != 0) {
-            int number = 11;
-
-            while (true) {
-                if (sumDigits(testCase) == sumDigits(testCase * number)) {
-                    break;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            int testCase = Integer.parseInt(reader.nextLine());
+            
+            while (testCase != 0) {
+                int number = 11;
+                
+                while (true) {
+                    if (sumDigits(testCase) == sumDigits(testCase * number)) {
+                        break;
+                    }
+                    
+                    number++;
                 }
-                number++;
+
+                output.append(number).append("\n");
+                testCase = Integer.parseInt(reader.nextLine());
             }
-
-            output.append(number).append("\n");
         }
-
-        reader.close();
+        
         System.out.println(output);
     }
 }

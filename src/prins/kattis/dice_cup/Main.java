@@ -8,10 +8,13 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int numN = reader.nextInt();
-        int numM = reader.nextInt();
-        reader.close();
+        int numN;
+        int numM;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            numN = reader.nextInt();
+            numM = reader.nextInt();
+        }
 
         Map<Integer, Integer> sumsMap = new HashMap<>();
         int highestTally = 0;

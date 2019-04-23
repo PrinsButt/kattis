@@ -6,11 +6,15 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int kangarooA = reader.nextInt();
-        int kangarooB = reader.nextInt();
-        int kangarooC = reader.nextInt();
-        reader.close();
+        int kangarooA;
+        int kangarooB;
+        int kangarooC;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            kangarooA = reader.nextInt();
+            kangarooB = reader.nextInt();
+            kangarooC = reader.nextInt();
+        }
 
         int moves = 0;
         int left = kangarooB - kangarooA;

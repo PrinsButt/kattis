@@ -6,11 +6,14 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        reader.nextLine();
-        StringBuffer word = new StringBuffer(reader.nextLine());
-        String ciphertext = reader.nextLine();
-        reader.close();
+        StringBuffer word;
+        String ciphertext;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            reader.nextLine();
+            word = new StringBuffer(reader.nextLine());
+            ciphertext = reader.nextLine();
+        }
 
         StringBuffer plaintext = new StringBuffer(word);
 

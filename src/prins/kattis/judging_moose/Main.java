@@ -6,10 +6,13 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int leftTines = reader.nextInt();
-        int rightTines = reader.nextInt();
-        reader.close();
+        int leftTines;
+        int rightTines;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            leftTines = reader.nextInt();
+            rightTines = reader.nextInt();
+        }
 
         if (leftTines == 0 && rightTines == 0) {
             System.out.println("Not a moose");

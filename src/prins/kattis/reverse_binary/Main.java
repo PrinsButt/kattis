@@ -6,11 +6,16 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int n = Integer.parseInt(reader.nextLine());
-        reader.close();
+        int n;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            n = Integer.parseInt(reader.nextLine());
+        }
 
-        String reversed = new StringBuilder(Integer.toBinaryString(n)).reverse().toString();
+        String reversed = new StringBuilder(Integer.toBinaryString(n))
+                .reverse()
+                .toString();
+        
         System.out.println(Integer.parseInt(reversed, 2));
     }
 }

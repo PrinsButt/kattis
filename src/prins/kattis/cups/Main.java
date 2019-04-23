@@ -27,8 +27,8 @@ class Main {
 
         reader.close();
 
-        for (Map.Entry<Double, String> entry : coloursMap.entrySet()) {
+        coloursMap.entrySet().forEach((entry) -> {
             System.out.println(entry.getValue());
-        }
+        });
     }
 }

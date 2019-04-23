@@ -6,38 +6,37 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int numProblems = reader.nextInt();
-        int numTestCases = reader.nextInt();
-
-        reader.nextLine();
-
         int problemsPassed = 0;
 
-        for (int problem = 0; problem < numProblems; problem++) {
-            int testCasesPassed = 0;
+        try (Scanner reader = new Scanner(System.in)) {
+            int numProblems = reader.nextInt();
+            int numTestCases = reader.nextInt();
+            reader.nextLine();
 
-            for (int testCase = 0; testCase < numTestCases; testCase++) {
-                String sentence = reader.nextLine();
-                String lowerCase = sentence.toLowerCase();
+            for (int problem = 0; problem < numProblems; problem++) {
+                int testCasesPassed = 0;
 
-                if (sentence.equals(lowerCase)) {
-                    testCasesPassed++;
-                } else {
-                    String modified = lowerCase.charAt(0) + sentence.substring(1, sentence.length());
-                    if (modified.equals(lowerCase)) {
+                for (int testCase = 0; testCase < numTestCases; testCase++) {
+                    String sentence = reader.nextLine();
+                    String lowerCase = sentence.toLowerCase();
+
+                    if (sentence.equals(lowerCase)) {
                         testCasesPassed++;
+                    } else {
+                        String modified = lowerCase.charAt(0)
+                                + sentence.substring(1, sentence.length());
+
+                        if (modified.equals(lowerCase)) {
+                            testCasesPassed++;
+                        }
                     }
                 }
-            }
 
-            if (testCasesPassed == numTestCases) {
-                problemsPassed++;
+                if (testCasesPassed == numTestCases) {
+                    problemsPassed++;
+                }
             }
-            testCasesPassed = 0;
         }
-
-        reader.close();
 
         System.out.println(problemsPassed);
     }

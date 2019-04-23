@@ -23,29 +23,28 @@ class Main {
         dominated.put("J", 2);
         dominated.put("T", 10);
 
-        Scanner reader = new Scanner(System.in);
-        int hands = reader.nextInt();
-        String suit = reader.nextLine().trim();
-
         int total = 0;
 
-        for (int index = 0; index < 4 * hands; index++) {
-            String card = reader.nextLine();
-            String cardValue = "" + card.charAt(0);
-            String cardSuit = "" + card.charAt(1);
+        try (Scanner reader = new Scanner(System.in)) {
+            int hands = reader.nextInt();
+            String suit = reader.nextLine().trim();
 
-            if (cardSuit.equals(suit)) {
-                if (dominant.containsKey(cardValue)) {
-                    total += dominant.get(cardValue);
-                }
-            } else {
-                if (dominated.containsKey(cardValue)) {
-                    total += dominated.get(cardValue);
+            for (int index = 0; index < 4 * hands; index++) {
+                String card = reader.nextLine();
+                String cardValue = "" + card.charAt(0);
+                String cardSuit = "" + card.charAt(1);
+
+                if (cardSuit.equals(suit)) {
+                    if (dominant.containsKey(cardValue)) {
+                        total += dominant.get(cardValue);
+                    }
+                } else {
+                    if (dominated.containsKey(cardValue)) {
+                        total += dominated.get(cardValue);
+                    }
                 }
             }
         }
-
-        reader.close();
 
         System.out.println(total);
     }

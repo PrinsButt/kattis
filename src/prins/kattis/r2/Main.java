@@ -6,10 +6,13 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int r1 = reader.nextInt();
-        int s = reader.nextInt();
-        reader.close();
+        int r1;
+        int s;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            r1 = reader.nextInt();
+            s = reader.nextInt();
+        }
 
         int r2 = (2 * s) - r1;
         System.out.println(r2);

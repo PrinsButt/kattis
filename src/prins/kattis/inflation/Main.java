@@ -9,16 +9,16 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int numBalloons = Integer.parseInt(reader.nextLine());
-
         List<Integer> helium = new ArrayList<>();
 
-        for (int index = 0; index < numBalloons; index++) {
-            helium.add(reader.nextInt());
+        int numBalloons;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            numBalloons = Integer.parseInt(reader.nextLine());
+            for (int index = 0; index < numBalloons; index++) {
+                helium.add(reader.nextInt());
+            }
         }
-
-        reader.close();
 
         Collections.sort(helium);
 

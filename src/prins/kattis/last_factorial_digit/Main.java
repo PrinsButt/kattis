@@ -16,23 +16,22 @@ class Main {
     }
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int testCases = Integer.parseInt(reader.nextLine());
-
         String output = "";
 
-        for (int testCase = 0; testCase < testCases; testCase++) {
-            int digit = Integer.parseInt(reader.nextLine());
-            String digitAsString = "" + Main.factorial(digit);
-            String lastDigit = digitAsString.substring(digitAsString.length() - 1);
-            output += lastDigit;
+        try (Scanner reader = new Scanner(System.in)) {
+            int testCases = Integer.parseInt(reader.nextLine());
 
-            if (testCase < testCases - 1) {
-                output += "\n";
+            for (int testCase = 0; testCase < testCases; testCase++) {
+                int digit = Integer.parseInt(reader.nextLine());
+                String digitAsString = "" + Main.factorial(digit);
+                String lastDigit = digitAsString.substring(digitAsString.length() - 1);
+                output += lastDigit;
+
+                if (testCase < testCases - 1) {
+                    output += "\n";
+                }
             }
         }
-
-        reader.close();
 
         System.out.println(output);
     }

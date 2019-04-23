@@ -6,8 +6,9 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        System.out.println(reader.nextLine().replaceAll("(.)\\1{1,}", "$1"));
-        reader.close();
+        try (Scanner reader = new Scanner(System.in)) {
+            String output = reader.nextLine().replaceAll("(.)\\1{1,}", "$1");
+            System.out.println(output);
+        }
     }
 }

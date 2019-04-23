@@ -6,43 +6,41 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-
         StringBuilder output = new StringBuilder();
         int setId = 0;
 
-        while (true) {
-            int numNames = Integer.parseInt(reader.nextLine());
-
-            if (numNames == 0) {
-                break;
-            }
-
-            StringBuilder firstHalf = new StringBuilder();
-            StringBuilder secondHalf = new StringBuilder();
-
-            setId++;
-
-            for (int index = 0; index < numNames; index++) {
-                String name = reader.nextLine();
-
-                if (index % 2 == 0) {
-                    firstHalf.append(name);
-                    firstHalf.append("\n");
-                } else {
-                    secondHalf.insert(0, "\n");
-                    secondHalf.insert(0, name);
+        try (Scanner reader = new Scanner(System.in)) {
+            while (true) {
+                int numNames = Integer.parseInt(reader.nextLine());
+                
+                if (numNames == 0) {
+                    break;
                 }
+                
+                StringBuilder firstHalf = new StringBuilder();
+                StringBuilder secondHalf = new StringBuilder();
+                
+                setId++;
+                
+                for (int index = 0; index < numNames; index++) {
+                    String name = reader.nextLine();
+                    
+                    if (index % 2 == 0) {
+                        firstHalf.append(name);
+                        firstHalf.append("\n");
+                    } else {
+                        secondHalf.insert(0, "\n");
+                        secondHalf.insert(0, name);
+                    }
+                }
+                
+                output.append("SET ");
+                output.append(setId);
+                output.append("\n");
+                output.append(firstHalf.toString());
+                output.append(secondHalf.toString());
             }
-
-            output.append("SET ");
-            output.append(setId);
-            output.append("\n");
-            output.append(firstHalf.toString());
-            output.append(secondHalf.toString());
         }
-
-        reader.close();
 
         System.out.print(output);
     }

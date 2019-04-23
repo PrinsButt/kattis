@@ -8,23 +8,22 @@ import java.util.Set;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int numEvents = Integer.parseInt(reader.nextLine());
-
-        Set<Integer> days = new HashSet<>();
-
-        for (int event = 0; event < numEvents; event++) {
-            int startDay = reader.nextInt();
-            int endDay = reader.nextInt();
-
-            for (int day = startDay; day <= endDay; day++) {
-                days.add(day);
+        Set<Integer> days;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            int numEvents = Integer.parseInt(reader.nextLine());
+            days = new HashSet<>();
+            for (int event = 0; event < numEvents; event++) {
+                int startDay = reader.nextInt();
+                int endDay = reader.nextInt();
+                
+                for (int day = startDay; day <= endDay; day++) {
+                    days.add(day);
+                }
+                
+                reader.nextLine();
             }
-
-            reader.nextLine();
         }
-
-        reader.close();
 
         System.out.println(days.size());
     }

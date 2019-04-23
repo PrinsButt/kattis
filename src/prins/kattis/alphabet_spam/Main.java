@@ -6,14 +6,17 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        String line = reader.nextLine();
-        reader.close();
+        String line;
 
-        double allLength = line.length();
-        System.out.println(line.replaceAll("[^_]", "").length() / allLength);
-        System.out.println(line.replaceAll("[^a-z]", "").length() / allLength);
-        System.out.println(line.replaceAll("[^A-Z]", "").length() / allLength);
-        System.out.println(line.replaceAll("[_a-zA-Z]", "").length() / allLength);
+        try (Scanner reader = new Scanner(System.in)) {
+            line = reader.nextLine();
+        }
+
+        double length = line.length();
+
+        System.out.println(line.replaceAll("[^_]", "").length() / length);
+        System.out.println(line.replaceAll("[^a-z]", "").length() / length);
+        System.out.println(line.replaceAll("[^A-Z]", "").length() / length);
+        System.out.println(line.replaceAll("[_a-zA-Z]", "").length() / length);
     }
 }

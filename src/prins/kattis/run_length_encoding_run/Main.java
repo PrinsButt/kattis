@@ -8,9 +8,11 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        String parts[] = reader.nextLine().split(" ");
-        reader.close();
+        String[] parts;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            parts = reader.nextLine().split(" ");
+        }
 
         if (parts[0].equals("E")) {
             // encrypt message

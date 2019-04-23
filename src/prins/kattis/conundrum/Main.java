@@ -8,9 +8,11 @@ class Main {
     private static final String NAME = "PER";
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        String cipher = reader.nextLine().toUpperCase();
-        reader.close();
+        String cipher;
+        
+        try (Scanner reader = new Scanner(System.in)) {
+            cipher = reader.nextLine().toUpperCase();
+        }
 
         int days = 0;
 
