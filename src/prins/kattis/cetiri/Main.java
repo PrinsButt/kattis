@@ -11,17 +11,15 @@ import java.util.stream.Stream;
  */
 public class Main {
 
-    private int[] retrieveNumbers() {
-        int[] numbers;
+    public static void main(String[] args) {
+        Main main = new Main();
+        main.process();
+    }
 
-        try (Scanner reader = new Scanner(System.in)) {
-            numbers = Stream.of(reader.nextLine().split(" "))
-                    .mapToInt(Integer::valueOf)
-                    .toArray();
-        }
-
-        Arrays.sort(numbers);
-        return numbers;
+    public void process() {
+        int[] data = retrieveNumbers();
+        int commonDifference = findCommonDifference(data);
+        System.out.println(findMissingTerm(data, commonDifference));
     }
 
     private int findCommonDifference(int[] numbers) {
@@ -51,14 +49,17 @@ public class Main {
         return missingTerm;
     }
 
-    public void process() {
-        int[] data = retrieveNumbers();
-        int commonDifference = findCommonDifference(data);
-        System.out.println(findMissingTerm(data, commonDifference));
+    private int[] retrieveNumbers() {
+        int[] numbers;
+
+        try (Scanner reader = new Scanner(System.in)) {
+            numbers = Stream.of(reader.nextLine().split(" "))
+                    .mapToInt(Integer::valueOf)
+                    .toArray();
+        }
+
+        Arrays.sort(numbers);
+        return numbers;
     }
 
-    public static void main(String[] args) {
-        Main main = new Main();
-        main.process();
-    }
 }
